@@ -172,7 +172,7 @@ En Python:
 'mi mama me mima'
 >>> len(items.split())
 4
-
+----------
 EJERICIO:
 Se desea realizar un programa en el cual se ingresen letras del abecedario, las
 cuales se deben almacenar en una lista. Una vez creada la lista, se desea conocer e
@@ -185,6 +185,110 @@ PROCESO: Ciclo: Llenar lista -> While mientras que la letra no sea Z
         Condicional: vocales
 SALIDA:canA,canE,canI,canO,cauU
 
+Codigo Python:
+----------
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 08/03/2023
+
+lista=[]
+letra=input("Letra: ")
+while letra!="z":
+    lista.append(letra)
+    letra=input("Letra: ")
+
+print(lista)
+canA=0
+canE=0
+canI=0
+canO=0
+canU=0
+for i in range(len(lista)):
+    if lista[i]=="a":
+        canA+=1
+    elif lista[i]=="e":
+        canE+=1
+    elif lista[i]=="i":
+        canI+=1
+    elif lista[i]=="o":
+        canO+=1
+    elif lista[i]=="u":
+        canU+=1
+        
+print("Cantidad de A: ",canA)
+print("Cantidad de E: ",canE)
+print("Cantidad de I: ",canI)
+print("Cantidad de O: ",canO)
+print("Cantidad de U: ",canU)
+
+----------------
+Otra forma en la que recorre y toma el valor de cada elemento en la lista
+Codigo Python:
+----------------
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 08/03/2023
+
+lista=[]
+letra=input("Letra: ")
+while letra!="z":
+    lista.append(letra)
+    letra=input("Letra: ")
+
+print(lista)
+canA=0
+canE=0
+canI=0
+canO=0
+canU=0
+#Lo que cambio en este es que x va tomando en orden 
+# cada valor de la lista y va recorriendo hasta el ultimo valor
+# es decir hasta que tomar el ultimo valor de la lista
+# lista=[1,5,2], entonces for x in lista: hace x=1, luego x=5, luego x=2
+for x in lista:
+    if x=="a":
+        canA+=1
+    elif x=="e":
+        canE+=1
+    elif x=="i":
+        canI+=1
+    elif x=="o":
+        canO+=1
+    elif x=="u":
+        canU+=1
+        
+print("Cantidad de A: ",canA)
+print("Cantidad de E: ",canE)
+print("Cantidad de I: ",canI)
+print("Cantidad de O: ",canO)
+print("Cantidad de U: ",canU)
+
+----------
+Otra forma de hacerlo con la funcion predefinida count()
+Codigo Python:
+----------
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 08/03/2023
+
+lista=[]
+letra=input("Letra: ")
+while letra!="z":
+    lista.append(letra)
+    letra=input("Letra: ")
+
+print(lista)
+canA=lista.count("a")
+canE=lista.count("e")
+canI=lista.count("i")
+canO=lista.count("o")
+canU=lista.count("u")
+
+print("Cantidad de A: ",canA)
+print("Cantidad de E: ",canE)
+print("Cantidad de I: ",canI)
+print("Cantidad de O: ",canO)
+print("Cantidad de U: ",canU)
 </code>
     </pre>
 </body>
