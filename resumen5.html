@@ -9,11 +9,183 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Fecha</h1>
+    <h1>08/03/2023</h1>
     <pre>
         <code class="language-python">
-#En proceso %
-        </code>
+De la maraton:
+solo tres intentos por ejercicios
+limites
+
+uno tiene una lista de paso para hacer
+Estructura de datos
+variable: espacio de memoria
+
+almacenamiento permanente (disco, etc): (base de datos, archivos como: texto y JSON)
+memoria: (variable estructuda como: (listas, tuplas, conjuntos, diccionarios), variable)
+
+SQL y otras bases de datos manejas archivos tipo JSON
+
+ejemplo lista: 
+lista=[1,2,3,4,"nombre",1.2,4]
+
+de la lista anterior se puede observar que es "mutable" y pueden ingresar varios 
+tipos de datos como string, float, int, listas, ...
+en programacion se llaman vectores (vector=lista)
+
+indice es la posicion donde esta el elemento
+lista=[1,2,3,4,"nombre",1.2,4] posicion empieza desde 0, entonces 0,1,2,3,4,5,6
+entonces:
+lista[0]=1
+lista[1]=2
+lista[2]=3
+lista[3]=4
+lista[4]="nombre"
+lista[5]=1.2
+lista[6]=4
+
+en una terminal se abre para correr python
+en Linux:  python3
+en Windows: python
+
+En Python:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$ python3
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> nombrePersona=["catalina","andres"]
+>>> nombrePersona
+['catalina', 'andres']
+>>> nombrePersona[1]
+'andres'
+>>> nombrePersona[0]
+'catalina'
+>>> nombrePersona[0:2]
+['catalina', 'andres']
+>>> listaPares=list(range(2,20,2))
+>>> listaPares
+[2, 4, 6, 8, 10, 12, 14, 16, 18]
+>>> lista=["pedro",50,3,1.2]
+>>> lista
+['pedro', 50, 3, 1.2]
+>>> lista[1]
+50
+>>> exit()
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$
+
+metodos para listas:
+append=agrega
+extend=agrega varios elementos como string dentro de una lista
+insert=añade item en una posicion
+pop=elimina elmento de lista segun indice
+remove=remueve un elemento de la lista segun su valor, si la informacion esta repetida
+elimna el primero que encuentre
+
+En Python:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$ python3
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> nombrePersona=[1,2,"elemento 2"]
+>>> nombrePersona.append("jose")
+>>> nombrePersona
+[1, 2, 'elemento 2', 'jose']
+>>> nombrePersona.extend(["maria","juan"])
+>>> nombrePersona
+[1, 2, 'elemento 2', 'jose', 'maria', 'juan']
+>>> nombrePersona.insert(2,"santiago")
+>>> nombrePersona
+[1, 2, 'santiago', 'elemento 2', 'jose', 'maria', 'juan']
+>>> nombrePersona.pop(4)
+'jose'
+>>> nombrePersona
+[1, 2, 'santiago', 'elemento 2', 'maria', 'juan']
+>>> nombrePersona.append("santiago")
+>>> nombrePersona
+[1, 2, 'santiago', 'elemento 2', 'maria', 'juan', 'santiago']
+>>> nombrePersona.remove("santiago")
+>>> nombrePersona
+[1, 2, 'elemento 2', 'maria', 'juan', 'santiago']
+>>> exit()
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$ 
+
+Funciones predefinidas en Python para listas:
+len()=cuenta el numero de elementos de una lista
+min()=entrega valor minimo
+max()=entrega valor maximo
+sort()=ordena los elementos de una lista: de mayor a menor si es numeros orden numerico, o si es 
+        letras de la A a Z orden alfabetico
+sort(reverse=True)=ordena al reves
+
+En Python:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$ python3
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> lista=[1, 2, 'elemento 2', 'jose']
+>>> len(lista)
+4
+>>> max(lista)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '>' not supported between instances of 'str' and 'int'
+>>> max(10,32,6,48)
+48
+>>> min(10,32,6,48)
+6
+>>> lista=[10,32,6,48]
+>>> lista.sort()
+>>> lista
+[6, 10, 32, 48]
+>>> lista=["andres","santiago","juan"]
+>>> lista.sort()
+>>> lista
+['andres', 'juan', 'santiago']
+>>> lista.sort(reverse=True)
+>>> lista
+['santiago', 'juan', 'andres']
+
+Importar Librerias
+A veces hay que importar librerias al programa para usar funciones especiales
+Ejemplo donde se calcular raiz de 16 en Python:
+>>> import math
+>>> math.sqrt(16)
+4.0
+
+Otras Funciones predefinidas en Python para listas:
+count()=cuenta el numero de veces que se encuentra un elemento dentro de una lista 
+split()=para hacer una lista a partir de un string segun paramento de separacion
+len(items.split())=calcula la cantidad de palabras
+
+
+En Python:
+%contar las veces que hay
+>>> numeros=[1,2,34,5,6,7,8,9,1]
+>>> print(numeros.count(1))
+2
+>>> nombres=["santa","col","col","andres","jose"]
+>>> print(nombres.count("col"))
+2
+>>> items="1,2,3,4,5,6"
+>>> items.split(",")
+['1', '2', '3', '4', '5', '6']
+>>> items="mi mama me mima"
+>>> items.split()
+['mi', 'mama', 'me', 'mima']
+>>> items
+'mi mama me mima'
+>>> len(items.split())
+4
+
+EJERICIO:
+Se desea realizar un programa en el cual se ingresen letras del abecedario, las
+cuales se deben almacenar en una lista. Una vez creada la lista, se desea conocer e
+imprimir la cantidad de “a”, la cantidad de “e”, la cantidad de “i”, la cantidad de
+“o” y la cantidad de “u” que se encuentran en la lista
+
+ENTRADA:letra
+PROCESO: Ciclo: Llenar lista -> While mientras que la letra no sea Z
+        Ciclo: Procesar lista->For len(lista)
+        Condicional: vocales
+SALIDA:canA,canE,canI,canO,cauU
+
+</code>
     </pre>
 </body>
 </html>

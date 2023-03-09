@@ -32,11 +32,339 @@
 </head>
 <body>
     <h1>Taller 1</h1>
-    <p><img src=".png"></p>
+    <p><img src="img/10.png"></p>
     <pre>
         <code class="language-python">
-#En proceso %
+#Programa 
+#Autor:
+#Fecha: 07/03/2023
+def validaEntero(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser un entero ")
+    return dato
+
+def validaEstrato():
+    while True:
+        try:
+            estrato=int(input("Estrato (1,2,3,4,5): "))
+            if estrato<1 or estrato>5:
+                print("El estrato debe estar entre 1 y 5")
+                continue
+            break
+        except ValueError:
+            print("El dato debe ser un entero")
+    return estrato
+
+def facturacionAbonado(estrato,impulsos):
+    if estrato==1:
+        tarifaBasica=10000
+    elif estrato==2:
+        tarifaBasica=15000
+    elif estrato==3:
+        tarifaBasica=30000
+    elif estrato==4:
+        tarifaBasica=50000
+    else:
+        tarifaBasica=65000
+    valorImpulsos=impulsos*100
+    valorPagar=tarifaBasica+valorImpulsos
+    return valorPagar,tarifaBasica,valorImpulsos
+
+#Programa principal
+N=int(input("Cantidad de abonados: "))
+totalPagar=0
+for i in range(N):
+    nombre=input("Nombre del usuario: ")
+    #estrato=int(input("Estrato (1,2,3,4,5): "))
+    estrato=validaEstrato()
+    impulsos=validaEntero("Cantidad de impulsos: ")
+    #Llamado a la funcion
+    valorPagar,tarifaBasica,valorImpulsos=facturacionAbonado(estrato,impulsos)
+    totalPagar=totalPagar+valorPagar
+    print("Nombre del usuario ",nombre)
+    print("Tarifa basica: ","{:,.2f}".format(tarifaBasica))
+    print("Valor impulsos: ","{:,.2f}".format(valorImpulsos))
+    print("Valor factura: ","{:,.2f}".format(valorPagar))
+    
+print("Valor total a pagar: ","{:,.2f}".format(totalPagar))
         </code>
     </pre>
+
+    <h1>Taller 2</h1>
+    <p><img src="img/11.png"></p>
+    <pre>
+        <code class="language-python">
+
+        </code>
+    </pre>
+
+    <h1>Taller 3</h1>
+    <p><img src="img/12.png"></p>
+    <h1>Con listas</h1>
+    <pre>
+        <code class="language-python">
+def validaEntero(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser un entero ")
+    return dato
+
+registro=[]
+cedula=validaEntero("Cedula de ciudadania: ")
+suma=0
+
+def validaFloat(etiqueta):
+    while True:
+        try:
+            dato=float(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser un numero con decimales")
+    return dato
+
+def validaTipo():
+    while True:
+        try:
+            tipo=int(input("Tipo de vendedor:\n 1: Puerta a Puerta\n 2: Telemercadeo\n 3: Ejecutivo de ventas\n Digitar numero (1,2,3): "))
+            if tipo<1 or tipo>3:
+                print("El tipo de vendedor debe estar entre 1 y 3\n")
+                continue
+            break
+        except ValueError:
+            print("El dato debe ser un entero\n")
+    return tipo
+
+def tipo_vendedor(tipo):
+    if tipo==1:
+        d=0.2
+    elif tipo==2:
+        d=0.15
+    else:
+        d=0.25
+    return d
+
+while cedula != -1:
+    nombre=input("Nombre: ")
+    tipo=validaTipo()
+    ventas=validaFloat("Valor ventas realizadas en el mes: ")
+    comision=ventas*tipo_vendedor(tipo)
+    registro.append([cedula,nombre,tipo,ventas,comision])
+    suma=suma+comision
+    print("\n")
+    cedula=validaEntero("Cedula de ciudadania: ")
+
+for item in registro:
+    print(f"El valor a pagar por comisión para {item[1]} es de: ","{:,.2f}".format(item[4]))
+    print(f"El valor total de las ventas del mes: ","{:,.2f}".format(ventas))
+    print("\n")
+
+print("El valor total a pagar por comisiones es: ","{:,.2f}".format(suma))
+        </code>
+    </pre>
+ 
+    <h1>Taller 4</h1>
+    <p><img src="img/13.png"></p>
+
+    <pre>
+        <code class="language-python">
+def validarEntero(etiqueta):
+    while True:
+        try:
+            dato = int(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser entero")
+    return dato
+
+def validarFlotante(etiqueta):
+    while True:
+        try:
+            dato = float(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser flotante")
+    return dato
+
+def validarRango(etiqueta, inf, sup):
+    while True:
+        try:
+            dato = int(input(etiqueta))
+            if dato<inf or dato>sup:
+                print("El dato debe estar entre", inf, "y", sup)
+                continue
+            break
+        except ValueError:
+            print("El dato debe ser entero")
+    return dato
+
+def valorPagarConductor(clase, valorPasajes, valorEncomiendas):
+    if clase == 1:
+        pagarPasajesConductor = valorPasajes*0.3
+        pagarEncomiendasConductor = valorEncomiendas*0.2
+        experto = 1
+        novato = 0
+    else:
+        pagarPasajesConductor = valorPasajes*0.2
+        pagarEncomiendasConductor = valorEncomiendas*0.15
+        novato = 1
+        experto = 0
+    valorPagarConductores = pagarPasajesConductor + pagarEncomiendasConductor
+    return pagarPasajesConductor, pagarEncomiendasConductor, valorPagarConductores, novato, experto
+
+N = int(input("Cantidad de conductores: "))
+totalPagar = 0
+totalNovatos = 0
+totalExpertos = 0
+for i in range(N):
+    cedula = validarEntero("Cédula del conductor: ")
+    nombre = input("Nombre del conductor: ")
+    clase = validarRango("Clase del conductor (1. Experto, 2. Novato): ", 1, 2)
+    valorPasajes = validarFlotante("Valor por pasajes en el mes: ")
+    valorEncomiendas = validarFlotante("Valor por encomiendas en el mes: ")
+    pagarPasajes, pagarEncomiendas, valorPagar, novatos, expertos = valorPagarConductor(clase, valorPasajes, valorEncomiendas)
+    totalPagar = totalPagar + valorPagar
+    totalExpertos = totalExpertos + expertos
+    totalNovatos = totalNovatos + novatos
+    print("Nombre del conductor: ", nombre)
+    print("Pago de pasajes: ", "{:,.2f}".format(pagarPasajes))
+    print("Pago de encomiendas: ", "{:,.2f}".format(pagarEncomiendas))
+    print("Valor a pagar: ", "{:,.2f}".format(valorPagar))
+print("Valor total: ", "{:,.2f}".format(totalPagar))
+print("Total de expertos: ", "{:,}".format(totalExpertos))
+print("Total de novatos: ", "{:,}".format(totalNovatos))
+        </code>
+    </pre>
+
+  <h1>con contador</h1>
+    <pre>
+        <code class="language-python">
+def validarEntero(etiqueta):
+    while True:
+        try:
+            dato = int(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser entero")
+    return dato
+
+def validarFlotante(etiqueta):
+    while True:
+        try:
+            dato = float(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser flotante")
+    return dato
+
+def validarRango(etiqueta, inf, sup):
+    while True:
+        try:
+            dato = int(input(etiqueta))
+            if dato<inf or dato>sup:
+                print("El dato debe estar entre", inf, "y", sup)
+                continue
+            break
+        except ValueError:
+            print("El dato debe ser entero")
+    return dato
+
+def valorPagarConductor(clase, valorPasajes, valorEncomiendas, experto, novato):
+    if clase == 1:
+        pagarPasajesConductor = valorPasajes*0.3
+        pagarEncomiendasConductor = valorEncomiendas*0.2
+        experto += 1
+    else:
+        pagarPasajesConductor = valorPasajes*0.2
+        pagarEncomiendasConductor = valorEncomiendas*0.15
+        novato += 1
+    valorPagarConductores = pagarPasajesConductor + pagarEncomiendasConductor
+    return pagarPasajesConductor, pagarEncomiendasConductor, valorPagarConductores, novato, experto
+
+N = int(input("Cantidad de conductores: "))
+totalPagar = 0
+totalNovatos = 0
+totalExpertos = 0
+for i in range(N):
+    cedula = validarEntero("Cédula del conductor: ")
+    nombre = input("Nombre del conductor: ")
+    clase = validarRango("Clase del conductor (1. Experto, 2. Novato): ", 1, 2)
+    valorPasajes = validarFlotante("Valor por pasajes en el mes: ")
+    valorEncomiendas = validarFlotante("Valor por encomiendas en el mes: ")
+    pagarPasajes, pagarEncomiendas, valorPagar, novatos, expertos = valorPagarConductor (clase, valorPasajes, valorEncomiendas, totalExpertos, totalNovatos)
+    totalPagar = totalPagar + valorPagar
+    totalExpertos = expertos
+    totalNovatos =  novatos
+    print("Nombre del conductor: ", nombre)
+    print("Pago de pasajes: ", "{:,.2f}".format(pagarPasajes))
+    print("Pago de encomiendas: ", "{:,.2f}".format(pagarEncomiendas))
+    print("Valor a pagar: ", "{:,.2f}".format(valorPagar))
+print("Valor total: ", "{:,.2f}".format(totalPagar))
+print("Total de expertos: ", "{:,}".format(totalExpertos))
+print("Total de novatos: ", "{:,}".format(totalNovatos))
+        </code>
+    </pre>
+
+    <h1>Taller 5</h1>
+    <p><img src="img/14.png"></p>
+    <h1>con listas</h1>
+    <pre>
+        <code class="language-python">
+registro=[]
+n=int(input("Escribir el numero de docentes de la institucion educativa: "))
+A=0
+B=0
+C=0
+valor_total=0
+
+def define_categoria(A,B,C,categoria):
+    if categoria=="A":
+        hora=25000
+        A=A+1
+    elif categoria=="B":
+        hora=35000
+        B=B+1
+    else:
+        hora=50000
+        C=C+1
+    return A,B,C,hora
+
+def calculo_honorarios(horas_mes,hora):
+    honorario=horas_mes*hora
+    return honorario
+
+def valor_total_honora(valor_total,honorarios):
+    valor_total=valor_total+honorarios
+    return valor_total
+
+for i in range(n):
+    cedula=int(input("Documento de identidad: "))
+    nombre=input("Nombre: ")
+    categoria=input("Categoria docente (A, B o C): ")
+    horas_mes=int(input("Horas laborales en el mes: "))  
+    A,B,C,hora=define_categoria(A,B,C,categoria)
+    honorarios=calculo_honorarios(horas_mes,hora)
+    valor_total=valor_total_honora(valor_total,honorarios)
+    registro.append([cedula,nombre,categoria,hora,honorarios])
+    print("\n")
+
+for item in registro:
+    print(f"El valor a pagar al docente {item[1]} por honorarios es: ","{:,.2f}".format(item[4]))
+    print("\n")
+
+print("El valor total a pagar a los docentes es: ","{:,.2f}".format(valor_total)) 
+print("Cantidad de docentes de cada una de las categorias es: ")
+print("De la categoria A es: ",A)
+print("De la categoria B es: ",B)
+print("De la categoria C es: ",C)
+        </code>
+    </pre>
+
 </body>
 </html>
