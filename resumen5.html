@@ -291,5 +291,159 @@ print("Cantidad de O: ",canO)
 print("Cantidad de U: ",canU)
 </code>
     </pre>
+
+    <h1>09/03/2023</h1>
+    <pre>
+        <code class="language-python">
+09/03/2023
+
+Como sera la maraton 
+campus-learning.tribu.team
+
+son 5 ejercicios, es decir 5 retos
+no debe llevar eqituetas cuando se sube el ejercicio para la maraton
+debe estar ordenada, las entradas es el orden e igual la salida
+sin validaciones de error
+etiquetas son: los que aparecen como por ejemplo escribir el nombre y asi 
+
+#ENTRADA
+#es decir si esta asi:
+nombre=input("Nombre: ")
+#debe quitarse la etiqueta y se pone: 
+nombre=input()
+
+#SALIDA
+#es decir si esta asi:
+print("Placa del vehiculo: ",placa) 
+#debe quitarse la etiqueta y se pone: 
+print(placa)
+
+#Tener tambien en cuenta el ORDEN de las entradas y las salidas
+#Recordar solo hay tres intentos
+#En cada pestaña hay un solo reto 
+#Recordar primero correrlo
+#Maraton desde las 6:30pm hasta las 9pm
+#No estan en orden de complejidad
+
+En el reto 
+que funcione el ejercicio 3.5
+si uso funciones suma mas puntos 4.5
+que le agrego validaciones 5 y asi sucesivamente
+
+Diccionarios
+El diccionario es una conexion de llaves (tambien llamada clave) con un valor
+indexa las llaves con un valor o elemento 
+clave:valor
+
+get es asignar o traer
+
+En python desde la terminal:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$ python3
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> empleado={"nombre":"Sergio Medina","salario":1500000,"edad":58}
+>>> empleado
+{'nombre': 'Sergio Medina', 'salario': 1500000, 'edad': 58}
+>>> empleado["nombre"]
+'Sergio Medina'
+>>> empleado.get("salario")
+1500000
+>>> empleado.get("email","No entontrado")
+'No entontrado'
+>>> empleado.get("edad","No entontrado")
+58
+>>> empleado={"nombre":"Sergio Medina","salario":1500000,"edad":58}
+>>> empleado
+{'nombre': 'Sergio Medina', 'salario': 1500000, 'edad': 58}
+>>> empleado["email"]="sc@gmail.com"
+>>> empleado
+{'nombre': 'Sergio Medina', 'salario': 1500000, 'edad': 58, 'email': 'sc@gmail.com'}
+>>> empleado["edad"]=30
+>>> empleado
+{'nombre': 'Sergio Medina', 'salario': 1500000, 'edad': 30, 'email': 'sc@gmail.com'}
+>>> len(empleado)
+4
+>>> del empleado["email"]
+>>> empleado
+{'nombre': 'Sergio Medina', 'salario': 1500000, 'edad': 30}
+
+La llave o clave puede ser un string o un entero preferiblemente
+
+EJERCICIO:
+Diccionarios -Ejercicio
+
+La institución educativa “SamEduca” cuenta con N docentes, conociendo de cada uno de ellos su número de cédula, nombre,
+categoría y números de horas laboradas en el mes. Se pide realizar un programa que calcule el valor de los honorarios de
+cada docente y el valor total a pagar por concepto de honorarios. Para este proceso, nos suministran el diccionario donde se
+define el valor de la hora para cada categoría, así:
+diccionario_categoria={1:25000,2:30000,3:40000,4:45000,5:60000}
+Se debe imprimir el nombre del docente, el valor de sus honorarios y el valor total de honorarios, el de los N docentes.
+
+Codigo Python:
+-------
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 09/03/2023
+dc={1:25000,2:30000,3:40000,4:45000,5:60000}
+N=int(input("Cantidad de docentes: "))
+totalPagar=0
+for i in range(N):
+    cedula=int(input("Cedula: "))
+    nombre=input("Nombre: ")
+    while True:
+        try:
+            categoria=int(input("Categoria: "))
+            if dc.get(categoria,"ERROR")=="ERROR":
+                print("Categoria NO existe")
+                continue          
+            break
+        except ValueError:
+            print("La categoria debe ser un entero: ")
+            
+    horas=int(input("horas laboradas: "))
+    valorPagar=horas*dc.get(categoria)
+    totalPagar+=valorPagar
+    print("Nombre: ",nombre)
+    print("Valor honorarios: ",valorPagar)
+
+print("Total a pagar ",totalPagar)
+
+-------
+Ahora con funcion
+-------
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 09/03/2023
+def x():
+    while True:
+        try:
+            categoria=int(input("Categoria: "))
+            if dc.get(categoria,"ERROR")=="ERROR":
+                print("Categoria NO existe")
+                continue          
+            break
+        except ValueError:
+            print("La categoria debe ser un entero: ")
+    return categoria
+
+dc={1:25000,2:30000,3:40000,4:45000,5:60000}
+N=int(input("Cantidad de docentes: "))
+totalPagar=0
+for i in range(N):
+    cedula=int(input("Cedula: "))
+    nombre=input("Nombre: ")
+    categoria=x()
+    horas=int(input("horas laboradas: "))
+    valorPagar=horas*dc.get(categoria)
+    totalPagar+=valorPagar
+    print("Nombre: ",nombre)
+    print("Valor honorarios: ",valorPagar)
+
+print("Total a pagar ",totalPagar)
+
+
+        </code>
+    </pre>
+
 </body>
 </html>

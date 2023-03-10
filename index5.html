@@ -56,5 +56,158 @@ print("El numero de numeros pares es: ",suma)
 print("El numero de numeros impares es: ",impares)
         </code>
     </pre>
+
+    <h1>Taller 2</h1>
+    <p><img src="img/17.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 09/03/2023
+lista=[]
+cantidad=[]
+nombre=input("Ingresa nombre: ")
+
+while nombre!="FIN":
+    lista.append(nombre)
+    #la parte nombre.split(" ") es para crear una lista con elementos 
+    #los cuales estan en el string separados con espacio " " 
+    #cantidad de palabras del nombre completo
+    x=len(nombre.split(" "))
+    #se agrega a otra lista la cantidad de palabras
+    cantidad.append(x)
+    nombre=input("Ingresa nombre completo: ")
+
+print("La lista generada fue: ",lista)
+print("Lista con cantidad de palbras es: ",cantidad)
+
+#Imprime junto a cada nombre la cantidad de palabras que tiene el nombre
+print("------------")
+for i in range(len(lista)):
+    print("Para el nombre ",lista[i], " la cantidad de palabras es: ",cantidad[i])
+        </code>
+    </pre>
+
+    <h1>Taller 3</h1>
+    <p><img src="img/18.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 09/03/2023
+codigo=int(input("Codigo: "))
+codigos=[]
+nombres=[]
+notas1=[]
+notas2=[]
+notas3=[]
+notas=[]
+mensajes=[]
+
+def nota_definitiva(nota1,nota2,nota3):
+    notadefinitiva=nota1*0.3+nota2*0.3+nota3*0.4
+    return notadefinitiva
+
+def aprobar(notadef):
+    if notadef>=3:
+        mensaje="Aprobo"
+    else:
+        mensaje="Reprobo"
+    return mensaje
+
+while codigo!=999:
+    nombre=input("Nombre: ")
+    nota1=float(input("Nota 1:"))
+    nota2=float(input("Nota 2:"))
+    nota3=float(input("Nota 3:"))
+    nota=nota_definitiva(nota1,nota2,nota3)
+    mensaje=aprobar(nota)
+    #Se guarda en listas la informacion
+    codigos.append(codigo)
+    nombres.append(nombre)
+    notas1.append(nota1)
+    notas2.append(nota2)
+    notas3.append(nota3)
+    notas.append(nota)
+    mensajes.append(mensaje)
+
+    print(f"El estudiante {nombre} obtuvo un nota de {nota:,.2f} por lo que {mensaje}")
+    codigo=int(input("Codigo: "))
+
+#Imprime toda la informacion recolectada y sus resultados para cada estudiante:
+print("------------")
+for i in range(len(codigos)):
+    print(f"Codigo: {codigos[i]}, Nombre: {nombres[i]}, Nota1: {notas1[i]}, Nota2: {notas2[i]}, Nota3: {notas3[i]}, Nota definitiva {notas[i]:,.2f}, Resultado: {mensajes[i]}")
+</code>
+    </pre>
+
+    <h1>Taller 4</h1>
+    <p><img src="img/19.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 09/03/2023
+
+def valida_codigo():
+    while True:
+        try:
+            codigo=int(input("Codigo del articulo: "))
+            if articulos.get(codigo,"ERROR")=="ERROR":
+                print("Codigo de articulo NO existe")
+                continue          
+            break
+        except ValueError:
+            print("El codigo debe ser un entero: ")
+    return codigo
+
+def valida_N():
+    while True:
+        try:
+            N=int(input("Cantidad de articulos: "))
+            if N<1 or N>5:
+                print("Eliga una cantidad de 1 a 5 articulos")
+                continue          
+            break
+        except ValueError:
+            print("La cantidad debe ser un entero: ")
+    return N
+
+def valida_entero(y):
+    while True:
+        try:
+            cantidad=int(input(y))      
+            break
+        except ValueError:
+            print("La cantidad debe ser un entero: ")
+    return cantidad
+articulos={1:"Lapiz",2:"Cuadernos",3:"Borrador",4:"Calculadora",5:"Escuadra"}
+valores={1:2500,2:3800,3:1200,4:35000,5:3700}
+
+N=valida_N()
+#solo para generar un espacio
+print(" ")
+lista_cantidad=[0,0,0,0,0]
+for i in range(N):
+    codigo=valida_codigo()
+    cantidad=valida_entero("Cantidad: ")
+    #pone en una lista la cantidad para cada articulo segun su llave
+    lista_cantidad[codigo-1]=cantidad
+    #solo para generar un espacio
+    print(" ")
+    
+#x guarda el valor total de la compra va sumando el valor total de comprar por cada 
+# acticulo y lo va sumando
+x=0
+for i in range(5):
+    valor_total_articulo=valores[i+1]*lista_cantidad[i]
+    print(f"Articulo: {articulos[i+1]}\n Valor unitario: {valores[i+1]}\n Cantidad comprada: {lista_cantidad[i]}\n Valor total por cantidad de articulo: {valor_total_articulo}")
+    x=valor_total_articulo+x
+    #solo para generar un espacio
+    print(" ")
+    
+print("El valor total de la compra es: ",x)
+        </code>
+    </pre>
 </body>
 </html>
