@@ -9,10 +9,327 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Fecha</h1>
+    <h1>10/03/2023</h1>
     <pre>
         <code class="language-python">
-#En proceso %
+Persistencia de Datos
+
+archivo: documentos producidos por personas naturales o juridicas
+archivo tienes: nombre, extension y tamaño
+archivo de texto .txt: estan compuesto por bytes con numeros y letras y otros caracteres
+Fases en el manejo de archivos: Creación, Apertura, Manipulación, Cierre
+
+Funciones para archivos texto:
+
+open => Abrir el archivo: Nombre y modo (lectura (r), escritura (w), agregar (a))
+write => Escribir en el archivo
+read => Leer información del archivo (Total)
+readlines => Leer la información del archivo línea a línea
+close => Cerrar el archivo
+
+Primero se abre archivo:
+Se crea el acrhivo: archivo.txt
+Codigo Python:
+-------
+#importar módulo io
+from io import open
+archivo_texto=open("archivo.txt","w")
+-------
+
+
+Codigo Python para crear archivo de texto y se agregar contenido:
+-----
+#Crear un archivo de texto plano
+#importar módulo io
+import io
+
+#Fase Apertura y Creación archivo
+archivo_texto=open("archivo.txt","w")
+
+#Fase Manipulación
+frase="Sergio Medina \nJuan Perez"
+archivo_texto.write(frase)
+
+#Fase Cierre
+archivo_texto.close()
+------
+De esta forma se crea el archivo: archivo.txt el cual contiene lo siguiente:
+Sergio Medina 
+Juan Perez 
+
+
+Lee todo el archivo de texto
+Codigo Python:
+--------
+#Leer un archivo de texto plano (Toda la información)
+#importar módulo io
+from io import open
+
+#Fase Apertura archivo modo lectura 
+archivo_texto=open("archivo.txt","r")
+#Debido al "r" lee todo el archivo
+
+#Leer la información del archivo
+texto=archivo_texto.read()
+
+#Cerrar el archivo
+archivo_texto.close()
+
+#Imprimir la información leída
+print(texto)
+------------
+De esta forma saldra en la terminal:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$  cd /home/apolo-19/Documents/a1 ; /usr/bin/env /bin/python3.11 /home/apolo-19/.vscode/extensions/ms-python.python-2023.4.1/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 32933 -- /home/apolo-19/Documents/a1/ArchivosTexto/leer_archivo_total.py 
+Sergio Medina 
+Juan Perez 
+
+
+Lee archivo de texto linea por linea
+Codigo Python:
+-------
+#Crear un archivo de texto plano
+#importar módulo io
+from io import open
+
+#Fase Apertura archivo modo lectura 
+archivo_texto=open("archivo.txt","r")
+
+#Leer la información del archivo línea por línea (Lista)
+lineas_texto=archivo_texto.readlines()
+
+#Cerrar el archivo
+archivo_texto.close()
+
+#Imprimir la información leída (Lista)
+print(lineas_texto)
+
+#Manejo de la lista
+for i in range(len(lineas_texto)):
+    print ("Nombre:  ",lineas_texto[i])
+-------
+Lo que hace es poner cada renglon de escritura en un elmento de una lista
+de forma que crea una lista donde cada elemento es un rengoln y lo pone como string
+de esta forma sale en la terminal:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$  cd /home/apolo-19/Documents/a1 ; /usr/bin/env /bin/python3.11 /home/apolo-19/.vscode/extensions/ms-python.python-2023.4.1/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 37327 -- /home/apolo-19/Documents/a1/ArchivosTexto/leer_archivo_lineas.py 
+['Sergio Medina \n', 'Juan Perez ']
+Nombre:   Sergio Medina 
+
+Nombre:   Juan Perez 
+
+
+Agrega informacion al archivo de texto 
+Codigo Python:
+-------
+#Agregar un archivo de texto plano
+#importar módulo io
+from io import open
+
+#Fase Apertura archivo modo lectura 
+archivo_texto=open("archivo.txt","a")
+#el metodo "a" permite que se pueda agregar contenido sin quitar 
+#el contenido que actualmente contiene y agrega el contenido en el ultimo renglon
+
+#Escribir en el archivo
+nom="\nLuisa Ruiz"
+archivo_texto.write(nom)
+
+#Cerrar el archivo
+archivo_texto.close()
+-------
+De esta forma lo que hace es agregar "Luisa Ruiz" en otra linea
+de tal forma que el archivo de texto que se modifico tendra lo siguiente:
+Sergio Medina 
+Juan Perez 
+Luisa Ruiz
+
+
+Archivos JSON (JavaScript Object Notation o Notación de Objetos de JavaScript)
+Formato ligero de intercambio de datos,
+Permiten almacenar estructuras de datos de Python, como listas o diccionarios para que se puedan
+utilizar en otro momento o en otro programa
+
+- Utiliza la librería o módulo json: import json
+- Se realizar su apertura con el comando open igual que los archivos texto.
+- El método para almacenar en el archivo json es dump
+- El método para leer o cargar la información del archivo json es load
+
+Archivos json en Python:
+
+Crea un archivo JSON: lista.json y pone en este archivo una lista:
+---------------
+# Programa para crear archivo JSON desde una lista
+# Autor: Sergio Medina
+# Fecha: 05/07/2022
+
+# Librería de comandos y métodos de JSON
+import json
+
+# Apertura del archivo JSON en modo escritura (w) (Crear ael archvo)
+archivo_json=open("lista.json","w")
+
+# Manipulación del archivo
+lista=["Sergio","Luisa","Maria","Juan"]
+json.dump(lista,archivo_json)
+
+# Cerrar el archivo JSON
+archivo_json.close()
+
+print("Proceso finalizado")
+--------------
+La lista que guardo en el archivo JSON:
+["Sergio", "Luisa", "Maria", "Juan"]
+
+
+Crea el archivo diccionario.json y pone en el un diccionario:
+Codigo Python:
+--------
+# Programa para crear archivo JSON desde un diccionario
+# Autor: Sergio Medina
+# Fecha: 05/07/2022
+
+# importar libreria json: comandos y métodos
+import json
+
+# Apertura en modo creación de archivo (w)
+archivo_json=open("diccionario.json","w")
+
+# Manipulación del archivo
+diccionario={'1':"Leche",'2':"Chocolate",'3':"Azucar",'4':"Arroz"}
+json.dump(diccionario,archivo_json)
+
+# Cerrar el erchivo JSON
+archivo_json.close()
+
+print("Proceso finalizado")
+-------
+EL diccionario que guarda es:
+{"1": "Leche", "2": "Chocolate", "3": "Azucar", "4": "Arroz"}
+
+
+Crea el archivo datos.json y pone un diccionario:
+Codigo python:
+-----------
+import json
+archivo_json=open("datos.json","w")
+datos={'1':"Leche",'2':"Chocolate",'3':"Azucar",'4':"Arroz"}
+json.dump(datos,archivo_json)
+archivo_json.close()
+print("Proceso finalizado")
+-----------
+Crea el archivo datos.json y pone en el siguiente diccionario:
+{"1": "Leche", "2": "Chocolate", "3": "Azucar", "4": "Arroz"}
+
+
+Lee el archivo diccionario.json
+Codigo Python:
+------------
+# Programa para leer dicionario desde un archivo archivo json
+# Autor: Sergio Medina
+# Fecha: 05/07/2022
+
+# Importar la libreria con los comandos y métodos de JSON
+import json
+
+# Apertura del archivo JSON
+archivo_json=open("diccionario.json","r")
+
+# Manipulación del archivo
+diccionario=json.load(archivo_json)
+
+# Cerrar archivo
+archivo_json.close()
+
+print(diccionario)
+print(diccionario['2'])
+------------
+Lee el archivo diccionario.json y muestra en la terminal:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$  cd /home/apolo-19/Documents/a1 ; /usr/bin/env /bin/python3.11 /home/apolo-19/.vscode/extensions/ms-python.python-2023.4.1/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 35051 -- /home/apolo-19/Documents/a1/ArchivoJson/leerDiccionario_jsonG01.py 
+{'1': 'Leche', '2': 'Chocolate', '3': 'Azucar', '4': 'Arroz'}
+Chocolate
+
+
+Lee el archivo lista.json
+Codigo Python:
+------------
+# Programa para leer una lista almacenada en archivo JSON
+# Autor: Sergio Medina
+# Fecha: 05/07/2022
+
+# Importar librería con los comandos y métodos JSON
+import json
+
+# Apertura del archivo JSON
+archivo_json=open("lista.json","r")
+
+# Manipulación del archivo
+lista=json.load(archivo_json)
+
+# Cerrar el archivo
+archivo_json.close()
+
+print(lista)
+for i in range(len(lista)):
+    print(lista[i])
+-----------------
+Lee el archivo lista.json y muestra en la terminal:
+apolo-19@apolo19-9048-900-0044:~/Documents/a1$  cd /home/apolo-19/Documents/a1 ; /usr/bin/env /bin/python3.11 /home/apolo-19/.vscode/extensions/ms-python.python-2023.4.1/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 50939 -- /home/apolo-19/Documents/a1/ArchivoJson/leerLista_jsonG01.py 
+['Sergio', 'Luisa', 'Maria', 'Juan']
+Sergio
+Luisa
+Maria
+Juan
+
+DEL RETO: sera tres horas y se pueden copiar y pegar las validaciones de codigo
+        </code>
+    </pre>
+
+    <h1>Codigo para crear archivo.txt donde recopila informacion separada por comas y busca si existe un nombre dentro de esa base de datos</h1>
+    <pre>
+        <code class="language-python">
+#Crear un archivo de texto plano
+#importar módulo io
+import io
+
+#Fase Apertura y Creación archivo
+archivo_texto=open("archivo1.txt","w")
+#el "w" porque es para escribir
+
+#ESTA ES LA PARTE DE LA BASE DE DATOS:
+#pedro,martinez,18,3216489612\njuan,velez,20,3218612313\ncesar,apellido,12,2120\ndiego,apellido,13,2121
+#ESA PARTE VA EN LA VARIABLE frase
+#Fase Manipulación
+frase="pedro,martinez,18,3216489612\njuan,velez,20,3218612313\ncesar,apellido,12,2120\ndiego,apellido,13,2121"
+archivo_texto.write(frase)
+#Cerrar el archivo
+archivo_texto.close()
+
+
+archivo_texto=open("archivo1.txt","r")
+
+#Leer la información del archivo línea por línea (Lista)
+lineas_texto=archivo_texto.readlines()
+
+#Cerrar el archivo
+archivo_texto.close()
+
+#Imprimir la información leída (Lista)
+#print(lineas_texto)
+
+
+#EL NOMBRE QUE SE BUSCO FUE "kevin"
+#Manejo de la lista
+for i in range(len(lineas_texto)):
+    lista1=lineas_texto[i].split(",")
+    if lista1[0]=="kevin":
+        a=1
+        break
+    else:
+        a=0
+
+if a==1:
+    print("Si existe ")
+else:
+    print("No existe ")
         </code>
     </pre>
 </body>
