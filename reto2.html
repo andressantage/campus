@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fair-style-button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: #00bb2d;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .fair-style-but {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: blue;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1 >Micromercado ACME</h1>
+    <p><img src="img/r2.png"></p>
+    <p><img src="img/r22.png"></p>
+    <p><img src="img/r23.png"></p>
+    <h1 style="color: red">OJO no esta completo si usted lo tiene completo compartirlo al grupo de whatsapp</h1>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 21/03/2023
+
+def validaEntero(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            break
+        except:
+            print("El dato debe ser un entero ")
+    return dato
+
+def validaSexo():
+    while True:
+        try:
+            sexo=input("Sexo del cliente [F, M] (F: Femenino, M:Másculino): ")
+            if sexo!="M" or sexo!="F":
+                print("El sexo del cliente debe ser F: Femenino ó M:Másculino ")
+                continue
+            break
+        except ValueError:
+            print(" ")
+    return sexo
+
+N=int(input("Ingresar la cantidad de clientes: "))
+cedulas=[]
+nombres=[]
+sexos=[]
+for i in range(N):
+    cedula=validaEntero("Cédula del cliente: ")
+    nombre=input("Nombre del cliente: ")
+    sexo=validaSexo()
+    cedulas.append(cedula)
+    nombres.append(nombre)
+    sexos.append(sexo)
+        </code>
+    </pre>
+</body>
+</html>
+
+

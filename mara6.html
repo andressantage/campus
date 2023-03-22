@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fair-style-button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: #00bb2d;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .fair-style-but {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: blue;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cifrado de Cesar</h1>
+    <p><img src="img/m6.png"></p>
+    <p><img src="img/m62.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 21/03/2023
+
+texto=input()
+k=int(input())
+abc="A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+letra=abc.split(" ")
+
+cifrad=""
+letra1=[]
+
+#LA CASA
+
+x=len(letra)
+for c in texto:
+    for i in range(x):
+        if c==letra[i]:
+            if (i+k)>x:
+                a=i+k-(x-1)
+            else:
+                a=i+k
+            cifrad=cifrad+letra[a]
+            print(cifrad)
+        elif c==" ":
+            cifrad=cifrad+" "
+            print(cifrad)
+
+print(cifrad)
+        </code>
+    </pre>
+</body>
+</html>
+

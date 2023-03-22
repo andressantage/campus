@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fair-style-button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: #00bb2d;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .fair-style-but {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: blue;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chance</h1>
+    <p><img src="img/m7.png"></p>
+    <p><img src="img/m72.png"></p>
+    <p><img src="img/m73.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa Nombre_programa
+#Autor: Nombre_autor
+#Fecha: 21/03/2023
+
+N=int(input())
+cedulas=[]
+numeros=[]
+valores=[]
+gana=[]
+num=int(input())
+for i in range(N):
+    cedula=int(input())
+    numero=int(input())
+    valor=int(input())
+    cedulas.append(cedula)
+    numeros.append(numero)
+    valores.append(valor)
+    gana.append(0)
+
+x=num
+y1=x-(x//1000)*1000
+y2=y1-(y1//100)*100
+y4=y2-(y2//10)*10
+n1=0
+for i in range(len(cedulas)):
+    if num==numeros[i]:
+        vp=4000*valores[i]
+        gana[i]=2
+
+for i in range(len(cedulas)):
+    if numeros[i]!=num:
+        x=numeros[i]
+        y1=x-(x//1000)*1000
+        y2=y1-(y1//100)*100
+        y3=y2-(y2//10)*10
+        if y4==y3:
+            gana[i]=1
+
+suma=0
+suma1=0
+for i in range(len(cedulas)):
+    if gana[i]==2:
+        suma=vp+suma
+        print(cedulas[i])
+        print(vp)
+
+for i in range(len(cedulas)):
+    suma1=valores[i]+suma1
+    if gana[i]==1:
+        print(cedulas[i])
+        print(300*valores[i])
+        suma=300*valores[i]+suma
+    
+
+print(suma1)
+print(suma)
+        </code>
+    </pre>
+</body>
+</html>
+
